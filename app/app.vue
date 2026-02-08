@@ -1,55 +1,104 @@
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
-    <!-- 背景の装飾（ピアノ鍵盤をイメージした細いライン） -->
-    <div class="absolute inset-0 opacity-10 pointer-events-none">
-      <div
-        v-for="i in 24"
-        :key="i"
-        class="absolute h-full w-px bg-white"
-        :style="{ left: `${(i / 25) * 100}%` }"
-      />
-    </div>
-
-    <NuxtRouteAnnouncer />
-
-    <main class="relative z-10 text-center px-6 max-w-2xl mx-auto">
-      <!-- アイコン・装飾 -->
-      <div class="mb-8 flex justify-center">
-        <span
-          class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 shadow-lg shadow-amber-500/10"
-          aria-hidden="true"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-10 h-10"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z"
-            />
-          </svg>
-        </span>
-      </div>
-
-      <h1
-        class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg"
-      >
-        <span class="block text-amber-400/90 font-serif italic">ピアノ教室</span>
-        <span class="block mt-2 text-2xl sm:text-3xl md:text-4xl font-sans font-medium text-slate-200">
-          アプリ 開発開始
-        </span>
+  <div class="min-h-screen bg-stone-50 text-stone-800 font-sans">
+    <nav
+      class="p-6 flex justify-between items-center bg-white shadow-sm sticky top-0 z-50"
+    >
+      <h1 class="text-2xl font-bold text-indigo-900 tracking-wider">
+        メロディピアノ教室
       </h1>
+      <div class="space-x-6 hidden md:flex">
+        <a href="#about" class="hover:text-indigo-600 transition"
+          >教室について</a
+        >
+        <a href="#courses" class="hover:text-indigo-600 transition">コース</a>
+        <a
+          href="#contact"
+          class="bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 transition"
+          >体験レッスン</a
+        >
+      </div>
+    </nav>
 
-      <p class="mt-8 text-slate-400 text-sm sm:text-base">
-        ようこそ。これから一緒にアプリを育てていきましょう。
-      </p>
+    <header class="relative py-20 px-6 text-center bg-indigo-50">
+      <div class="max-w-4xl mx-auto">
+        <h2
+          class="text-4xl md:text-6xl font-extrabold text-indigo-900 mb-6 leading-tight"
+        >
+          音楽を一生の友だちに。
+        </h2>
+        <p class="text-lg md:text-xl text-stone-600 mb-10 leading-relaxed">
+          初めての方から音大受験まで。一人ひとりの個性に寄り添い、<br
+            class="hidden md:block"
+          />
+          ピアノを奏でる喜びを丁寧にサポートします。
+        </p>
+        <button
+          class="bg-indigo-600 text-white text-lg font-bold px-10 py-4 rounded-full shadow-lg hover:scale-105 transition-transform"
+        >
+          無料で体験レッスンに申し込む
+        </button>
+      </div>
+    </header>
 
-      <div class="mt-12 h-px w-24 mx-auto bg-gradient-to-r from-transparent via-amber-500/50 to-transparent rounded-full" />
-    </main>
+    <section id="about" class="py-20 px-6 max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h3 class="text-3xl font-bold text-indigo-900 mb-4 italic">Concept</h3>
+        <p class="text-stone-500 italic">私たちの想い</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div
+          class="bg-stone-200 aspect-video rounded-2xl flex items-center justify-center text-stone-400 italic"
+        >
+          ここに教室の写真を入れます
+        </div>
+        <div class="space-y-6">
+          <h4 class="text-2xl font-bold text-indigo-800">
+            「好き」が一番の上達法です
+          </h4>
+          <p class="leading-relaxed text-stone-600">
+            当教室では、ただ楽譜通りに弾くだけでなく、音楽を通じて自分を表現する楽しさを大切にしています。
+            厳しく教えるのではなく、好奇心を引き出し、楽しみながら長く続けられる環境をご用意しています。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses" class="py-20 bg-white px-6">
+      <div class="max-w-6xl mx-auto">
+        <h3 class="text-3xl font-bold text-center text-indigo-900 mb-12">
+          コース案内
+        </h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            v-for="course in [
+              'こどもコース',
+              'おとなコース',
+              '受験・専門コース'
+            ]"
+            :key="course"
+            class="p-8 border border-stone-100 rounded-3xl bg-stone-50 hover:shadow-xl transition shadow-sm"
+          >
+            <h4 class="text-xl font-bold mb-4 text-indigo-700">{{ course }}</h4>
+            <p class="text-stone-600 text-sm leading-relaxed mb-6">
+              レベルや目標に合わせたオーダーメイドレッスン。初心者の方も大歓迎です。
+            </p>
+            <span class="text-indigo-600 font-bold">¥8,000〜 / 月</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="py-12 bg-indigo-900 text-white text-center">
+      <p class="mb-4">© 2026 メロディピアノ教室</p>
+      <div class="flex justify-center space-x-4 text-sm opacity-70">
+        <span>アクセス：〇〇駅から徒歩5分</span>
+        <span>|</span>
+        <span>お電話：03-XXXX-XXXX</span>
+      </div>
+    </footer>
   </div>
 </template>
+
+<script setup>
+// ここに後でSupabaseなどの処理を書きます
+</script>
